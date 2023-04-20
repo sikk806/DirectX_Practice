@@ -1,6 +1,7 @@
 # DirectX_Practice
 
 ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
+
 https://www.notion.so/DirectX12-c8744a3cced04c88865a016702628ff2?pvs=4
 
 0. test

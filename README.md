@@ -13,3 +13,6 @@ https://www.notion.so/DirectX12-c8744a3cced04c88865a016702628ff2?pvs=4
 2. Matrix
  - 행렬 관련 함수 연습
 
+4. Initialization
+ - DirectX의 초기화
+ - 화면 띄우기

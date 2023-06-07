@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Applicationclass.h" />
+    <ClInclude Include="D3dclass.h" />
     <ClInclude Include="InputClass.h" />
     <ClInclude Include="Systemclass.h" />
   </ItemGroup>
@@ -140,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Applicationclass.cpp" />
+    <ClCompile Include="D3dclass.cpp" />
     <ClCompile Include="InputClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Systemclass.cpp" />

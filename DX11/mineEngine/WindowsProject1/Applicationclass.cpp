@@ -31,6 +31,7 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 {
 	//For Texture
 	char textureFilename[128];
+	char modelFilename[128];
 	bool result;
 
 	m_Direct3D = new D3DClass;
@@ -47,6 +48,9 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	// Set the initial position of the camera.
 	m_Camera->SetPosition(0.0f, 0.0f, -5.0f);
 
+	// Set the file name of the model.
+	strcpy_s(modelFilename, "./data/cube.txt");
+
 	// Create and initialize the model object.
 	m_Model = new ModelClass;
 
@@ -56,7 +60,7 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	// Set the name of the texture file that we will be loading.
 	strcpy_s(textureFilename, "./data/stone01.tga");
 
-	result = m_Model->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), textureFilename);
+	result = m_Model->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), modelFilename, textureFilename, hwnd);
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
@@ -89,11 +93,6 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 
 	m_Light->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light->SetDirection(0.0f, 0.0f, 1.0f);
-
-	/*m_Light_back = new LightClass;
-
-	m_Light_back->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
-	m_Light_back->SetDirection(0.0f, 0.0f, -1.0f);*/
 
 	return true;
 }
@@ -139,21 +138,6 @@ void ApplicationClass::Shutdown()
 		delete m_LightShader;
 		m_LightShader = 0;
 	}
-
-	// 2nd Light
-	/*if (m_Light_back)
-	{
-		delete m_Light_back;
-		m_Light_back = 0;
-	}
-
-	if (m_LightShader_back)
-	{
-		m_LightShader_back->Shutdown();
-		delete m_LightShader_back;
-		m_LightShader_back = 0;
-	}*/
-	// 2nd Light
 
 	// Release the model object.
 	if (m_Model)
@@ -203,7 +187,7 @@ bool ApplicationClass::Render(float rotation)
 
 
 	// Clear the buffers to begin the scene.
-	m_Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
+	m_Direct3D->BeginScene(1.0f, 1.0f, 1.0f, 1.0f);
 
 	// Generate the view matrix based on the camera's position.
 	m_Camera->Render();
@@ -233,13 +217,6 @@ bool ApplicationClass::Render(float rotation)
 	{
 		return false;
 	}
-
-	/*result = m_LightShader_back->Render(m_Direct3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, m_Model->GetTexture(),
-		m_Light_back->GetDirection(), m_Light_back->GetDiffuseColor());
-	if (!result)
-	{
-		return false;
-	}*/
 
 	m_Direct3D->EndScene();
 	return true;

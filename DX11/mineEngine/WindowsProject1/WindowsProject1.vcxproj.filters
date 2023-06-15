@@ -123,4 +123,9 @@
       <Filter>소스 파일\Engine</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\cube.txt">
+      <Filter>소스 파일\Engine</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

@@ -16,3 +16,6 @@ https://www.notion.so/DirectX12-c8744a3cced04c88865a016702628ff2?pvs=4
 4. Initialization
  - DirectX의 초기화
  - 화면 띄우기
+
+DX11
+ - DirectX11 코드
